@@ -20,11 +20,11 @@ namespace ConsoleApplication1
         }
 
         [Test]
-        public void LookForSetOfSizeOneOfATwoDigitNumber_ExpectNullReturned()
+        public void LookForSetOfSizeOneOfATwoDigitNumber_ExpectEmptyReturned()
         {
             var listOfSetsReturned = Program.FindSetsThatSumToTotal(1, 12, 9);
 
-            Assert.AreEqual(listOfSetsReturned, null);
+            Assert.AreEqual(listOfSetsReturned, Program.EMPTY_LIST);
         }
 
         [Test]
@@ -59,11 +59,11 @@ namespace ConsoleApplication1
         }
 
         [Test]
-        public void LookForSetOfSizeGreaterThanOneWhichReturnsNoResults_ExpectNullReturned()
+        public void LookForSetOfSizeGreaterThanOneWhichReturnsNoResults_ExpectEmptyReturned()
         {
             var listOfSetsReturned = Program.FindSetsThatSumToTotal(2, 21, 9);
 
-            Assert.AreEqual(listOfSetsReturned, null);
+            Assert.AreEqual(listOfSetsReturned, Program.EMPTY_LIST);
         }
 
     }

@@ -7,6 +7,9 @@ namespace ConsoleApplication1
 {
     class Program
     {
+        // The empty list constant.
+        public static List<List<int>> EMPTY_LIST = new List<List<int>>();
+
         public static List<List<int>> FindSetsThatSumToTotal(int sizeOfSet, int total, int largestValue)
         {
             if (sizeOfSet == 1 && total <= largestValue && total > 0)
@@ -17,18 +20,18 @@ namespace ConsoleApplication1
             }
             else if (sizeOfSet == 1)
             {
-                return null;
+                return EMPTY_LIST;
             }
 
-            List<List<int>> listOfSets = null;
+            List<List<int>> listOfSets = EMPTY_LIST;
 
             for (int i = 1; i <= largestValue && i < total; i++)
             {
                 List<List<int>> listOfSmallerSets = FindSetsThatSumToTotal(sizeOfSet - 1, total - i, i);
 
-                if (listOfSmallerSets != null)
+                if (listOfSmallerSets != EMPTY_LIST)
                 {
-                    if (listOfSets == null)
+                    if (listOfSets == EMPTY_LIST)
                     {
                         listOfSets = new List<List<int>>();
                     }
@@ -75,7 +78,7 @@ namespace ConsoleApplication1
 
             List<List<int>> listOfSets = FindSetsThatSumToTotal(sizeOfSet, sum, 9);
 
-            if (listOfSets == null)
+            if (listOfSets == EMPTY_LIST)
             {
                 Console.WriteLine("No Such Sets");
             }
