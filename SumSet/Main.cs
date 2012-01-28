@@ -33,20 +33,24 @@ namespace ConsoleApplication1
                         listOfSets = new List<List<int>>();
                     }
 
-                    GrowSets(listOfSets, i, listOfSmallerSets);
+                    listOfSets.AddRange(GrowSets(listOfSmallerSets, i));
                 }
             }
             return listOfSets;
         }
 
-        private static void GrowSets(List<List<int>> listOfSets, int i, List<List<int>> listOfSmallerSets)
+        private static List<List<int>>  GrowSets(List<List<int>> sets, int value)
         {
-            foreach (List<int> smallSet in listOfSmallerSets)
+            List<List<int>> result = new List<List<int>>(sets.Count);
+
+            foreach (List<int> smallSet in sets)
             {
-                List<int> bigSet = new List<int> { i };
+                List<int> bigSet = new List<int> { value };
                 bigSet.AddRange(smallSet);
-                listOfSets.Add(bigSet);
+                result.Add(bigSet);
             }
+
+            return result;
         }
 
         public static string ConvertListToString(List<List<int>> listOfSets)
